@@ -1,0 +1,12 @@
+name: mmorpg
+
+services:
+  postgres:
+    image: 'postgres:latest'
+    container_name: mmorpg_postgres
+    environment:
+      - 'POSTGRES_DB=mmorpg_postgres'
+      - 'POSTGRES_PASSWORD=secret'
+      - 'POSTGRES_USER=borys'
+    ports:
+      - '5432:5432'
