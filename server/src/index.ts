@@ -8,6 +8,8 @@ const port = 8080
 
 dotenv.config()
 
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 app.use('/users', userRoutes)
 
 app.get('/', async (req: Request, res: Response) => {
