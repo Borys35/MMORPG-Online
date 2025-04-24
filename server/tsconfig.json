@@ -113,6 +113,9 @@
   "include": [
     "src/**/*",
     "prisma.config.ts",
-    ".env"
+    ".env",
   ],
+  "files": [
+    "src/custom.d.ts",
+  ]
 }
