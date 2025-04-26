@@ -1,7 +1,7 @@
 import express, {Request, Response} from 'express'
 import prisma from './prisma/client'
 import dotenv from 'dotenv'
-import userRoutes from './routes/user'
+import userRoutes from './routes/userRoutes'
 
 const app = express();
 const port = 8080

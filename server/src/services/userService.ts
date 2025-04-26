@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt'
 export async function register(registerUser: RegisterUser) {
     const errors = await validate(registerUser)
     if (errors.length > 0) {
-        throw new Error("Register validation failed")
+        throw { message: 'Validation failed', errors }
     }
 
     try {
@@ -19,6 +19,6 @@ export async function register(registerUser: RegisterUser) {
             }
         })
     } catch (error) {
-        throw new Error("User registration failed")
+        throw { message: 'User already exists' }
     }
 }

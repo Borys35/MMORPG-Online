@@ -1,7 +1,7 @@
 import { Request, Response, Router } from 'express';
 import { authenticateToken } from '../middlewares/jwt';
 import { RegisterUser } from '../models/user';
-import { register } from '../services/user';
+import { register } from '../services/userService';
 
 const router = Router()
 
