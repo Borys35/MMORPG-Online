@@ -125,6 +125,52 @@ exports.Prisma.UserScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.CharacterScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  level: 'level',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  gold: 'gold',
+  experience: 'experience',
+  statsId: 'statsId'
+};
+
+exports.Prisma.StatsScalarFieldEnum = {
+  id: 'id',
+  health: 'health',
+  maxHealth: 'maxHealth',
+  strength: 'strength',
+  dexterity: 'dexterity',
+  intelligence: 'intelligence',
+  characterId: 'characterId'
+};
+
+exports.Prisma.ItemScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  type: 'type',
+  requiredLevel: 'requiredLevel',
+  price: 'price',
+  characterId: 'characterId',
+  npcId: 'npcId'
+};
+
+exports.Prisma.QuestScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  levelRequired: 'levelRequired',
+  characterId: 'characterId',
+  npcId: 'npcId'
+};
+
+exports.Prisma.NPCScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  location: 'location'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -142,7 +188,12 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Character: 'Character',
+  Stats: 'Stats',
+  Item: 'Item',
+  Quest: 'Quest',
+  NPC: 'NPC'
 };
 
 /**
