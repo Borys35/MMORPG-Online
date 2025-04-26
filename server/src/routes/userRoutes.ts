@@ -1,7 +1,8 @@
 import { Request, Response, Router } from 'express';
 import { authenticateToken } from '../middlewares/jwt';
-import { RegisterUser } from '../models/user';
-import { register } from '../services/userService';
+import { LoginUser, RegisterUser } from '../models/user';
+import { login, register } from '../services/userService';
+import { generateAccessToken } from '../services/jwt';
 
 const router = Router()
 
@@ -20,6 +21,22 @@ router.post('/register', async (req: Request, res: Response) => {
         res.status(400).json({ error });
     }
 })
+
+router.post('/login', async (req: Request, res: Response) => {
+    const { email, password } = req.body
+    const loginUser = new LoginUser()
+    loginUser.email = email
+    loginUser.password = password
+
+    try {
+        const user = await login(loginUser);
+        const token = generateAccessToken(user.email);
+        res.json({ token });
+    } catch (error) {
+        res.status(400).json({ error });
+    }
+})
+
 
 router.get('/me', authenticateToken, async (req: Request, res: Response) => {
     res.json({ user: req.user });
