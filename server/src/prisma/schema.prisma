@@ -38,7 +38,7 @@ model Character {
   stats      Stats?
   gold       Int
   experience Int
-  statsId    Int     @unique
+  statsId    Int?    @unique
 }
 
 model Stats {

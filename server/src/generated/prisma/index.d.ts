@@ -2749,7 +2749,7 @@ export namespace Prisma {
     createdAt: Date
     gold: number
     experience: number
-    statsId: number
+    statsId: number | null
     _count: CharacterCountAggregateOutputType | null
     _avg: CharacterAvgAggregateOutputType | null
     _sum: CharacterSumAggregateOutputType | null
@@ -2853,7 +2853,7 @@ export namespace Prisma {
       createdAt: Date
       gold: number
       experience: number
-      statsId: number
+      statsId: number | null
     }, ExtArgs["result"]["character"]>
     composites: {}
   }
@@ -8565,7 +8565,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Character"> | Date | string
     gold?: IntFilter<"Character"> | number
     experience?: IntFilter<"Character"> | number
-    statsId?: IntFilter<"Character"> | number
+    statsId?: IntNullableFilter<"Character"> | number | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     items?: ItemListRelationFilter
     quests?: QuestListRelationFilter
@@ -8580,7 +8580,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     gold?: SortOrder
     experience?: SortOrder
-    statsId?: SortOrder
+    statsId?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     items?: ItemOrderByRelationAggregateInput
     quests?: QuestOrderByRelationAggregateInput
@@ -8613,7 +8613,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     gold?: SortOrder
     experience?: SortOrder
-    statsId?: SortOrder
+    statsId?: SortOrderInput | SortOrder
     _count?: CharacterCountOrderByAggregateInput
     _avg?: CharacterAvgOrderByAggregateInput
     _max?: CharacterMaxOrderByAggregateInput
@@ -8632,7 +8632,7 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Character"> | Date | string
     gold?: IntWithAggregatesFilter<"Character"> | number
     experience?: IntWithAggregatesFilter<"Character"> | number
-    statsId?: IntWithAggregatesFilter<"Character"> | number
+    statsId?: IntNullableWithAggregatesFilter<"Character"> | number | null
   }
 
   export type StatsWhereInput = {
@@ -8950,7 +8950,7 @@ export namespace Prisma {
     createdAt?: Date | string
     gold: number
     experience: number
-    statsId: number
+    statsId?: number | null
     user: UserCreateNestedOneWithoutCharactersInput
     items?: ItemCreateNestedManyWithoutCharacterInput
     quests?: QuestCreateNestedManyWithoutCharacterInput
@@ -8965,7 +8965,7 @@ export namespace Prisma {
     createdAt?: Date | string
     gold: number
     experience: number
-    statsId: number
+    statsId?: number | null
     items?: ItemUncheckedCreateNestedManyWithoutCharacterInput
     quests?: QuestUncheckedCreateNestedManyWithoutCharacterInput
     stats?: StatsUncheckedCreateNestedOneWithoutCharacterInput
@@ -8977,7 +8977,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     gold?: IntFieldUpdateOperationsInput | number
     experience?: IntFieldUpdateOperationsInput | number
-    statsId?: IntFieldUpdateOperationsInput | number
+    statsId?: NullableIntFieldUpdateOperationsInput | number | null
     user?: UserUpdateOneRequiredWithoutCharactersNestedInput
     items?: ItemUpdateManyWithoutCharacterNestedInput
     quests?: QuestUpdateManyWithoutCharacterNestedInput
@@ -8992,7 +8992,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     gold?: IntFieldUpdateOperationsInput | number
     experience?: IntFieldUpdateOperationsInput | number
-    statsId?: IntFieldUpdateOperationsInput | number
+    statsId?: NullableIntFieldUpdateOperationsInput | number | null
     items?: ItemUncheckedUpdateManyWithoutCharacterNestedInput
     quests?: QuestUncheckedUpdateManyWithoutCharacterNestedInput
     stats?: StatsUncheckedUpdateOneWithoutCharacterNestedInput
@@ -9006,7 +9006,7 @@ export namespace Prisma {
     createdAt?: Date | string
     gold: number
     experience: number
-    statsId: number
+    statsId?: number | null
   }
 
   export type CharacterUpdateManyMutationInput = {
@@ -9015,7 +9015,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     gold?: IntFieldUpdateOperationsInput | number
     experience?: IntFieldUpdateOperationsInput | number
-    statsId?: IntFieldUpdateOperationsInput | number
+    statsId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type CharacterUncheckedUpdateManyInput = {
@@ -9026,7 +9026,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     gold?: IntFieldUpdateOperationsInput | number
     experience?: IntFieldUpdateOperationsInput | number
-    statsId?: IntFieldUpdateOperationsInput | number
+    statsId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type StatsCreateInput = {
@@ -9430,6 +9430,17 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -9511,6 +9522,22 @@ export namespace Prisma {
     statsId?: SortOrder
   }
 
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
   export type CharacterScalarRelationFilter = {
     is?: CharacterWhereInput
     isNot?: CharacterWhereInput
@@ -9566,17 +9593,6 @@ export namespace Prisma {
     characterId?: SortOrder
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NPCNullableScalarRelationFilter = {
     is?: NPCWhereInput | null
     isNot?: NPCWhereInput | null
@@ -9626,22 +9642,6 @@ export namespace Prisma {
     price?: SortOrder
     characterId?: SortOrder
     npcId?: SortOrder
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type QuestCountOrderByAggregateInput = {
@@ -9819,6 +9819,14 @@ export namespace Prisma {
     connect?: StatsWhereUniqueInput
   }
 
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type UserUpdateOneRequiredWithoutCharactersNestedInput = {
     create?: XOR<UserCreateWithoutCharactersInput, UserUncheckedCreateWithoutCharactersInput>
     connectOrCreate?: UserCreateOrConnectWithoutCharactersInput
@@ -9945,14 +9953,6 @@ export namespace Prisma {
     delete?: NPCWhereInput | boolean
     connect?: NPCWhereUniqueInput
     update?: XOR<XOR<NPCUpdateToOneWithWhereWithoutItemsInput, NPCUpdateWithoutItemsInput>, NPCUncheckedUpdateWithoutItemsInput>
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type CharacterCreateNestedOneWithoutQuestsInput = {
@@ -10238,7 +10238,7 @@ export namespace Prisma {
     createdAt?: Date | string
     gold: number
     experience: number
-    statsId: number
+    statsId?: number | null
     items?: ItemCreateNestedManyWithoutCharacterInput
     quests?: QuestCreateNestedManyWithoutCharacterInput
     stats?: StatsCreateNestedOneWithoutCharacterInput
@@ -10251,7 +10251,7 @@ export namespace Prisma {
     createdAt?: Date | string
     gold: number
     experience: number
-    statsId: number
+    statsId?: number | null
     items?: ItemUncheckedCreateNestedManyWithoutCharacterInput
     quests?: QuestUncheckedCreateNestedManyWithoutCharacterInput
     stats?: StatsUncheckedCreateNestedOneWithoutCharacterInput
@@ -10294,7 +10294,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Character"> | Date | string
     gold?: IntFilter<"Character"> | number
     experience?: IntFilter<"Character"> | number
-    statsId?: IntFilter<"Character"> | number
+    statsId?: IntNullableFilter<"Character"> | number | null
   }
 
   export type UserCreateWithoutCharactersInput = {
@@ -10508,7 +10508,7 @@ export namespace Prisma {
     createdAt?: Date | string
     gold: number
     experience: number
-    statsId: number
+    statsId?: number | null
     user: UserCreateNestedOneWithoutCharactersInput
     items?: ItemCreateNestedManyWithoutCharacterInput
     quests?: QuestCreateNestedManyWithoutCharacterInput
@@ -10522,7 +10522,7 @@ export namespace Prisma {
     createdAt?: Date | string
     gold: number
     experience: number
-    statsId: number
+    statsId?: number | null
     items?: ItemUncheckedCreateNestedManyWithoutCharacterInput
     quests?: QuestUncheckedCreateNestedManyWithoutCharacterInput
   }
@@ -10549,7 +10549,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     gold?: IntFieldUpdateOperationsInput | number
     experience?: IntFieldUpdateOperationsInput | number
-    statsId?: IntFieldUpdateOperationsInput | number
+    statsId?: NullableIntFieldUpdateOperationsInput | number | null
     user?: UserUpdateOneRequiredWithoutCharactersNestedInput
     items?: ItemUpdateManyWithoutCharacterNestedInput
     quests?: QuestUpdateManyWithoutCharacterNestedInput
@@ -10563,7 +10563,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     gold?: IntFieldUpdateOperationsInput | number
     experience?: IntFieldUpdateOperationsInput | number
-    statsId?: IntFieldUpdateOperationsInput | number
+    statsId?: NullableIntFieldUpdateOperationsInput | number | null
     items?: ItemUncheckedUpdateManyWithoutCharacterNestedInput
     quests?: QuestUncheckedUpdateManyWithoutCharacterNestedInput
   }
@@ -10574,7 +10574,7 @@ export namespace Prisma {
     createdAt?: Date | string
     gold: number
     experience: number
-    statsId: number
+    statsId?: number | null
     user: UserCreateNestedOneWithoutCharactersInput
     quests?: QuestCreateNestedManyWithoutCharacterInput
     stats?: StatsCreateNestedOneWithoutCharacterInput
@@ -10588,7 +10588,7 @@ export namespace Prisma {
     createdAt?: Date | string
     gold: number
     experience: number
-    statsId: number
+    statsId?: number | null
     quests?: QuestUncheckedCreateNestedManyWithoutCharacterInput
     stats?: StatsUncheckedCreateNestedOneWithoutCharacterInput
   }
@@ -10633,7 +10633,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     gold?: IntFieldUpdateOperationsInput | number
     experience?: IntFieldUpdateOperationsInput | number
-    statsId?: IntFieldUpdateOperationsInput | number
+    statsId?: NullableIntFieldUpdateOperationsInput | number | null
     user?: UserUpdateOneRequiredWithoutCharactersNestedInput
     quests?: QuestUpdateManyWithoutCharacterNestedInput
     stats?: StatsUpdateOneWithoutCharacterNestedInput
@@ -10647,7 +10647,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     gold?: IntFieldUpdateOperationsInput | number
     experience?: IntFieldUpdateOperationsInput | number
-    statsId?: IntFieldUpdateOperationsInput | number
+    statsId?: NullableIntFieldUpdateOperationsInput | number | null
     quests?: QuestUncheckedUpdateManyWithoutCharacterNestedInput
     stats?: StatsUncheckedUpdateOneWithoutCharacterNestedInput
   }
@@ -10682,7 +10682,7 @@ export namespace Prisma {
     createdAt?: Date | string
     gold: number
     experience: number
-    statsId: number
+    statsId?: number | null
     user: UserCreateNestedOneWithoutCharactersInput
     items?: ItemCreateNestedManyWithoutCharacterInput
     stats?: StatsCreateNestedOneWithoutCharacterInput
@@ -10696,7 +10696,7 @@ export namespace Prisma {
     createdAt?: Date | string
     gold: number
     experience: number
-    statsId: number
+    statsId?: number | null
     items?: ItemUncheckedCreateNestedManyWithoutCharacterInput
     stats?: StatsUncheckedCreateNestedOneWithoutCharacterInput
   }
@@ -10741,7 +10741,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     gold?: IntFieldUpdateOperationsInput | number
     experience?: IntFieldUpdateOperationsInput | number
-    statsId?: IntFieldUpdateOperationsInput | number
+    statsId?: NullableIntFieldUpdateOperationsInput | number | null
     user?: UserUpdateOneRequiredWithoutCharactersNestedInput
     items?: ItemUpdateManyWithoutCharacterNestedInput
     stats?: StatsUpdateOneWithoutCharacterNestedInput
@@ -10755,7 +10755,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     gold?: IntFieldUpdateOperationsInput | number
     experience?: IntFieldUpdateOperationsInput | number
-    statsId?: IntFieldUpdateOperationsInput | number
+    statsId?: NullableIntFieldUpdateOperationsInput | number | null
     items?: ItemUncheckedUpdateManyWithoutCharacterNestedInput
     stats?: StatsUncheckedUpdateOneWithoutCharacterNestedInput
   }
@@ -10875,7 +10875,7 @@ export namespace Prisma {
     createdAt?: Date | string
     gold: number
     experience: number
-    statsId: number
+    statsId?: number | null
   }
 
   export type CharacterUpdateWithoutUserInput = {
@@ -10884,7 +10884,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     gold?: IntFieldUpdateOperationsInput | number
     experience?: IntFieldUpdateOperationsInput | number
-    statsId?: IntFieldUpdateOperationsInput | number
+    statsId?: NullableIntFieldUpdateOperationsInput | number | null
     items?: ItemUpdateManyWithoutCharacterNestedInput
     quests?: QuestUpdateManyWithoutCharacterNestedInput
     stats?: StatsUpdateOneWithoutCharacterNestedInput
@@ -10897,7 +10897,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     gold?: IntFieldUpdateOperationsInput | number
     experience?: IntFieldUpdateOperationsInput | number
-    statsId?: IntFieldUpdateOperationsInput | number
+    statsId?: NullableIntFieldUpdateOperationsInput | number | null
     items?: ItemUncheckedUpdateManyWithoutCharacterNestedInput
     quests?: QuestUncheckedUpdateManyWithoutCharacterNestedInput
     stats?: StatsUncheckedUpdateOneWithoutCharacterNestedInput
@@ -10910,7 +10910,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     gold?: IntFieldUpdateOperationsInput | number
     experience?: IntFieldUpdateOperationsInput | number
-    statsId?: IntFieldUpdateOperationsInput | number
+    statsId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ItemCreateManyCharacterInput = {
